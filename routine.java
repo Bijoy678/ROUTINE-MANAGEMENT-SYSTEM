@@ -36,6 +36,7 @@ public class routine extends HttpServlet {
 			 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/routine", "root","");	
 
 			 String subject = request.getParameter("Stream");
+			 String strm123 =subject;
 			// System.out.println("Stream"+subject); 
 			 try (Statement statement = conn.createStatement() /* Which database have run in here */ ) {
 	             String query = "Select * from subject_table";
@@ -45,14 +46,14 @@ public class routine extends HttpServlet {
 	             int count=0;
 	             while(result.next()){ // it is run while info have in databases  one by one
 	                 String  subject_name; /* all data come in string format like int vrchar, */
-	                 
+
 	                 String subjectId,teacher1,teacher2,teacher3;
 	                 subjectId = result.getString("SubjectID");
 	                 subject_name = result.getString("SubjectName");
 	                 teacher1 = result.getString("TeacherID1");
 	                 teacher2 = result.getString("TeacherID2");
 	                 teacher3 = result.getString("TeacherID3");
-
+	            
 	                 int Room = 0;
 		        	 if (subject_name.equalsIgnoreCase("English")) {
 		        		 Room=1;
@@ -212,13 +213,15 @@ public class routine extends HttpServlet {
 	    			         }
                                 
 	    		        	// System.out.println("Subject is  not avabilale in routine  Table !!!!!!!!!! ");
-	    		        	 }
-	    		         
-	    		        	
+	    		        	 }	    		         ab.close();	
 	    		         }		        	 
 
 	    		         
-	    		         } ///System.out.println("");                                  //else part in if 	    
+	    		         } 
+	    		         stor.close();	    		         
+	    		         
+	    		         
+	    		         ///System.out.println("");                                  //else part in if 	    
 	    		         
 	    		     //***********************************************       New Lab code ******************************************************  
 	    		        
@@ -243,7 +246,7 @@ public class routine extends HttpServlet {
 	    	            		// Not Null Subject 
 	    	            		 
 	    	            		  try (Statement n = conn.createStatement()){ // Try version 2.0
-	    	 	    		         String search2 = "Select * from subject_table"; // Subject table --->> SubjectName , TeacherID1, TeacherID2, TeacherID3
+	    	 	    		         String search2 = "Select * from subject_table"; // Subject table --->> SubjectName , TeacherID1, TeacherID2,TeacherID3
 	    	 	    	             
 	    	 	    	             ResultSet out2 = n.executeQuery(search2);
 	    	            		 while(out2.next()) { // 	While 3.0 
@@ -606,14 +609,7 @@ catch(Exception e){System.out.println(""+e);
                         
  System.out.println("Bijoy You can add  T2 here ******** OKKKKKKKKKKKKKKKKKKKK");                    
                         
-                        
- /*                       
- System.out.println("Subject id : "+subjectId);
- System.out.println("Subject id : "+subject_name);
- System.out.println("Subject id : "+teacher1);
- System.out.println("Subject id : "+teacher2);
- System.out.println("Subject id : "+teacher3);                   
- */                       
+                      
           
  String Time2 ="11:00";
  String Day3="Monday";
@@ -647,13 +643,9 @@ catch(Exception e){System.out.println(""+e);
      	System.out.println("Subject is avabilale in routine  Table........ "); 
       }
       else {
-    	  
-    	  
-    	  
+    	
     	  System.out.println("Subject is avabilale not routine  Table........!! "); 
-    	  
-
-     	 
+    	
     	  String[] arts1 = {"English","Education","History","Music","Geography"};
 	        String[] commerce1 = {"Business", "Income Tax","Corporate Law","Economics","Auditing"};
 	       String[] science1 = {"Physics", "Chemistry","Mathematics","Biology","Computer"};
@@ -737,9 +729,6 @@ catch(Exception e){System.out.println(""+e);
 
     	  PreparedStatement add = conn.prepareStatement("insert into  routinetable(Stream,Subject,Day,Time,Teacher1,Teacher2,Room,Type) values(?,?,?,?,?,?,?,?)");
  	     
-	     //   String Type = "Lab";
-	        
-	       
 	      //  String Stream =stm;
 	           add.setString(1,stm1);
 	           add.setString(2,subject_name);
@@ -777,42 +766,16 @@ catch(Exception e){System.out.println(""+e);
  
  /*  ///////////////////////////////******         End              Teacher2 Add code   *******************************************                            */                        
 
- 
- 
- 
- 
- 
- 
- 
- 
+
  
  /*    **********************************************    Teacher 3 *************************************                                       */
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
  
  /*  ///////////////////////////////******                       Teacher2 Add code   *******************************************                            */                        
  
- 
- System.out.println("Bijoy You can add  T3 here ******** OKKKKKKKKKKKKKKKKKKKK");                    
-                        
-                        
- /*                       
- System.out.println("Subject id : "+subjectId);
- System.out.println("Subject id : "+subject_name);
- System.out.println("Subject id : "+teacher1);
- System.out.println("Subject id : "+teacher2);
- System.out.println("Subject id : "+teacher3);                   
- */                       
-          
+       
  String Time3 ="1:00";
  String Day4="Monday";
  String Teacher11 ="";
@@ -986,152 +949,1252 @@ catch(Exception e){System.out.println(""+e);
  
  /*  ///////////////////////////////******         End              Teacher2 Add code   *******************************************                            */                        
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+                 
                         
       /*  ***************************************************************      Teacher 3      ***********************************************   */                  
                         
                         
+  /*        ******** Tuesday , Wednesday, Thusday,Friday, Saturday******** */                      
                         
                         
-                        
-                        
-                        
+    
+ 
+ //System.out.println("Hello Bijoy You can do **************************************************************"); 
+ //
+
+// L1=:9:00  L2=10:00 L3=11:00 
+ 
+ 
+ //subject_name = result.getString("SubjectName");
+// teacher1 = result.getString("TeacherID1");
+ //teacher2 = result.getString("TeacherID2");
+ //teacher3 = result.getString("TeacherID3");
+
+ 
+ 
+// System.out.println(""+subject_name);
+ 
+ //System.out.println(""+teacher1);
+
+ //System.out.println(""+teacher2);
+
+ 
+
+ String Time ="";
+ String Day="Tuesday";
+ //String Teacher ="";
+ String Type = "Theroy";
+ String Lab ="";
+ int x;
+ 
+ 
+
+ 
+/*        ******** Tuesday , Wednesday, Thusday,Friday, Saturday******** */ 
                         
                         
 } // (public class routine extends HttpServlet)------->{doGet(request, response);}-----> [1st Try] ------> [2nd Try] -->while loop
-//statement.close();
-//result.close();
+statement.close();
+result.close();
+	             
+	             
+System.out.println("BIJOY Bijoy Bijoy ");
 
+	             
+	             
+	             try (Statement tue = conn.createStatement() ) {
+		             String search = "Select * from subject_table";
+		           //  System.out.println("Test 1 ");
+		             ResultSet out = tue.executeQuery(search);
+		          //   System.out.println("Test 2 ");
+
+		             int con=0;
+		             while(out.next()){
+		            	
+			         //    System.out.println("Test 3 ");
+
+			            // System.out.println("Test 4 ");
+
+		            	 String  subject_name; 
+		                 String subjectId1,teacher1,teacher2,teacher3;
+		                 subjectId1 = out.getString("SubjectID");
+		                 subject_name = out.getString("SubjectName");
+		                 teacher1 = out.getString("TeacherID1");
+		                 teacher2 = out.getString("TeacherID2");
+		                 teacher3 = out.getString("TeacherID3");
+		                 
+		                 String Day="";
+		                 int x=1;
+		                 for(x=1;x<=5;x++) {
+		                 	 
+		                                 	 
+		                 	if(x==1) {
+		                 		Day ="Tuesday";
+		                 		
+		                 	}
+		                 	else if(x==2) {
+		                 		Day ="Wednesday";
+		                 		
+		                 	}
+		                 	else if(x==3) {
+		                 		Day ="Thursday";
+		                 	}
+		                 	else  if(x==4) {
+		                 		Day ="Friday";
+		                 	}
+		                 	else if(x==5) {
+		                 		Day ="Saturday";
+		                 	}
+		                  
+
+
+		                 
+			           //  System.out.println("Test 5 ");
+
+		                 
+		              //   System.out.println("Bijoy Bijoy Bijoy");
+
+		                 
+		                 System.out.println(""+subject_name);
+		                 
+		                 System.out.println(""+teacher1);
+
+		                 System.out.println(""+teacher2);
+		                 System.out.println(""+teacher3);
+		                 
+/*----------------------------------------------------------------------------- Teacher ID 1 -----------------------------------------------------*/		                 
+
+try{
+if(teacher1==null) {
+
+// 
+
+}
+
+else if(teacher1!=null) {
+	
+	
+
+	 String Time ="9:00";
+	// String Day="Tuesday";
+	 //String Teacher ="";
+	 String Type = "Theroy";
+	 String Lab ="";
+	// int x;
+//
+System.out.println(" Techer 2 not null bijoy ");
+
+PreparedStatement stor2 = conn.prepareStatement("SELECT * FROM  routinetable WHERE Subject =? and Day=?  and Teacher1 =? and Time=?");
+stor2.setString(1,subject_name);//1st value into UserID 
+stor2.setString(2,Day);
+
+stor2.setString(3,teacher1);
+
+stor2.setString(4,Time);
+
+ResultSet rs1 = stor2.executeQuery();
+if(rs1.next()) {
+System.out.println("Subject is avabilale in routine  Table........ "); 
+}
+else {
+ 
+ 
+ 
+ System.out.println("Subject is avabilale not routine  Table........!! "); 
+ 
+
+ 
+ String[] arts1 = {"English","Education","History","Music","Geography"};
+   String[] commerce1 = {"Business", "Income Tax","Corporate Law","Economics","Auditing"};
+  String[] science1 = {"Physics", "Chemistry","Mathematics","Biology","Computer"};
+
+//  System.out.println();     // Which stream according to Subjects 
+  String stm1="";
+  
+  for (int i = 0; i < 5; i++) {
+       if (subject_name.equals(arts1[i])) {
+          System.out.println("Arts");
+         stm1="Arts";
+           break;
+       } else if (subject_name.equals(commerce1[i])) {
+           System.out.println("Commerce");
+           stm1="commerce";
+           		
+           break;
+       } else if (subject_name.equals(science1[i])) {
+           System.out.println("Science");
+           stm1="Science";
+           
+           break;
+       }
+   }
+ 
+ 
+	 if (subject_name.equalsIgnoreCase("English")) {
+		 Lab="1";
+		 
+     // System.out.println("Lab number 1");
+  } else if (subject_name.equalsIgnoreCase("History")) {
+		 Lab="2";
+     // System.out.println("Lab number 2");
+  }
+  
+  else if (subject_name.equalsIgnoreCase("Music")) {
+		 Lab="3";
+
+      System.out.println("Lab number 3");
+  }
+	 
+  else if (subject_name.equalsIgnoreCase("Geography")) {
+		 Lab="4";
+  }
+  else if (subject_name.equalsIgnoreCase("Education")) {
+		 Lab="5";
+  }
+  else if (subject_name.equalsIgnoreCase("Auditing")) {
+		 Lab="6";
+  }
+  else if (subject_name.equalsIgnoreCase("Economics")) {
+		 Lab="7";
+  }
+  else if (subject_name.equalsIgnoreCase("Corporate Law")) {
+		 Lab="8";
+  }
+  else if (subject_name.equalsIgnoreCase("Income Tax")) {
+		 Lab="9";
+  }
+  else if (subject_name.equalsIgnoreCase("Business")) {
+		 Lab="10";
+  }
+  else if (subject_name.equalsIgnoreCase("Mathematics")) {
+		 Lab="11";
+  }
+  else if (subject_name.equalsIgnoreCase("Physics")) {
+		 Lab="12";
+  }
+  else if (subject_name.equalsIgnoreCase("Chemistry")) {
+		 Lab="13";
+  }
+	 
+  else if (subject_name.equalsIgnoreCase("Biology")) {
+ 	 Lab="14";
+  }
+  else if (subject_name.equalsIgnoreCase("Computer")) {
+      Lab="15";
+  } else {
+      System.out.println("Lab number not assigned");
+  }
+
+ PreparedStatement add = conn.prepareStatement("insert into  routinetable(Stream,Subject,Day,Time,Teacher1,Room,Type) values(?,?,?,?,?,?,?)");
+ 
+//   String Type = "Lab";
+
+ System.out.println(""+subject_name);
+ 
+ System.out.println(""+teacher1);
+
+//System.out.println(""+teacher2);
+
+  
+ //  String Stream =stm;
+      add.setString(1,stm1);
+      add.setString(2,subject_name);
+      add.setString(3,Day);
+      add.setString(4,Time); 
+      add.setString(5,teacher1);
+     //add.setString(6,teacher2);
+      add.setString(6,Lab);	//room   		  
+    // lau.setString(8,"Group1");
+      add.setString(7,Type);
+
+  int cc=   add.executeUpdate();
+ if(cc>0) {
+
+   	 PrintWriter pn = response.getWriter();
+			 pn.print("Update Sucessful Teacher2!! ");  
+ }
+ 
+ else {
+	  System.out.println("Tacher 2 Not Add ");
+ }
+ 
+}
+
+}
+else {
+
+//  System.out.println("Please Add Bijoy ***! ");
+
+}
+}
+catch(Exception e) {
+
+}
+		  
+/*----------------------------------------------------------------------------- Teacher ID 1 -----------------------------------------------------*/
+
+
+/*----------------------------------------------------------------------------- Teacher ID 2 -----------------------------------------------------*/	                 
+		                 
+
+try{
+if(teacher2==null) {
+
+// 
+
+}
+
+else if(teacher2!=null) {
+	
+	
+
+	 String Time ="11:00";
+//	 String Day="Tuesday";
+	 //String Teacher ="";
+	 String Type = "Theroy";
+	 String Lab ="";
+	// int x;
+//
+System.out.println(" Techer 2 not null bijoy ");
+
+PreparedStatement stor2 = conn.prepareStatement("SELECT * FROM  routinetable WHERE Subject =? and Day=?  and Teacher2 =? and Time=?");
+stor2.setString(1,subject_name);//1st value into UserID 
+stor2.setString(2,Day);
+
+stor2.setString(3,teacher2);
+
+stor2.setString(4,Time);
+
+ResultSet rs1 = stor2.executeQuery();
+if(rs1.next()) {
+System.out.println("Subject is avabilale in routine  Table........ "); 
+}
+else {
+ 
+ 
+ 
+ System.out.println("Subject is avabilale not routine  Table........!! "); 
+ 
+
+ 
+ String[] arts1 = {"English","Education","History","Music","Geography"};
+   String[] commerce1 = {"Business", "Income Tax","Corporate Law","Economics","Auditing"};
+  String[] science1 = {"Physics", "Chemistry","Mathematics","Biology","Computer"};
+
+//  System.out.println();     // Which stream according to Subjects 
+  String stm1="";
+  
+  for (int i = 0; i < 5; i++) {
+       if (subject_name.equals(arts1[i])) {
+          System.out.println("Arts");
+         stm1="Arts";
+           break;
+       } else if (subject_name.equals(commerce1[i])) {
+           System.out.println("Commerce");
+           stm1="commerce";
+           		
+           break;
+       } else if (subject_name.equals(science1[i])) {
+           System.out.println("Science");
+           stm1="Science";
+           
+           break;
+       }
+   }
+ 
+ 
+	 if (subject_name.equalsIgnoreCase("English")) {
+		 Lab="1";
+		 
+     // System.out.println("Lab number 1");
+  } else if (subject_name.equalsIgnoreCase("History")) {
+		 Lab="2";
+     // System.out.println("Lab number 2");
+  }
+  
+  else if (subject_name.equalsIgnoreCase("Music")) {
+		 Lab="3";
+
+      System.out.println("Lab number 3");
+  }
+	 
+  else if (subject_name.equalsIgnoreCase("Geography")) {
+		 Lab="4";
+  }
+  else if (subject_name.equalsIgnoreCase("Education")) {
+		 Lab="5";
+  }
+  else if (subject_name.equalsIgnoreCase("Auditing")) {
+		 Lab="6";
+  }
+  else if (subject_name.equalsIgnoreCase("Economics")) {
+		 Lab="7";
+  }
+  else if (subject_name.equalsIgnoreCase("Corporate Law")) {
+		 Lab="8";
+  }
+  else if (subject_name.equalsIgnoreCase("Income Tax")) {
+		 Lab="9";
+  }
+  else if (subject_name.equalsIgnoreCase("Business")) {
+		 Lab="10";
+  }
+  else if (subject_name.equalsIgnoreCase("Mathematics")) {
+		 Lab="11";
+  }
+  else if (subject_name.equalsIgnoreCase("Physics")) {
+		 Lab="12";
+  }
+  else if (subject_name.equalsIgnoreCase("Chemistry")) {
+		 Lab="13";
+  }
+	 
+  else if (subject_name.equalsIgnoreCase("Biology")) {
+ 	 Lab="14";
+  }
+  else if (subject_name.equalsIgnoreCase("Computer")) {
+      Lab="15";
+  } else {
+      System.out.println("Lab number not assigned");
+  }
+
+ PreparedStatement add = conn.prepareStatement("insert into  routinetable(Stream,Subject,Day,Time,Teacher2,Room,Type) values(?,?,?,?,?,?,?)");
+ 
+//   String Type = "Lab";
+
+ System.out.println(""+subject_name);
+ 
+ System.out.println(""+teacher1);
+
+//System.out.println(""+teacher2);
+
+  
+ //  String Stream =stm;
+      add.setString(1,stm1);
+      add.setString(2,subject_name);
+      add.setString(3,Day);
+      add.setString(4,Time); 
+      add.setString(5,teacher2);
+     //add.setString(6,teacher2);
+      add.setString(6,Lab);	//room   		  
+    // lau.setString(8,"Group1");
+      add.setString(7,Type);
+
+  int cc=   add.executeUpdate();
+ if(cc>0) {
+
+   	 PrintWriter pn = response.getWriter();
+			 pn.print("Update Sucessful Teacher2!! ");  
+ }
+ 
+ else {
+	  System.out.println("Tacher 2 Not Add ");
+ }
+ 
+}
+
+}
+else {
+
+//  System.out.println("Please Add Bijoy ***! ");
+
+}
+}
+catch(Exception e) {
+
+}
+
+
+/* -----------------------------------------------------------------------Teacher Id 2 --------------------------------------------------------------*/
+
+/* -----------------------------------------------------------------------Teacher Id 3 --------------------------------------------------------------*/
+
+
+
+
+try{
+if(teacher3==null) {
+
+// 
+
+}
+
+else if(teacher3!=null) {
+	
+	
+
+	 String Time ="1:00";
+	// String Day="Tuesday";
+	 //String Teacher ="";
+	 String Type = "Theroy";
+	 String Lab ="";
+	// int x;
+//
+System.out.println(" Techer 2 not null bijoy ");
+
+PreparedStatement stor2 = conn.prepareStatement("SELECT * FROM  routinetable WHERE Subject =? and Day=?  and Teacher3 =? and Time=?");
+stor2.setString(1,subject_name);//1st value into UserID 
+stor2.setString(2,Day);
+
+stor2.setString(3,teacher3);
+
+stor2.setString(4,Time);
+
+ResultSet rs1 = stor2.executeQuery();
+if(rs1.next()) {
+System.out.println("Subject is avabilale in routine  Table........ "); 
+}
+else {
+ 
+ 
+ 
+ System.out.println("Subject is avabilale not routine  Table........!! "); 
+ 
+
+ 
+ String[] arts1 = {"English","Education","History","Music","Geography"};
+   String[] commerce1 = {"Business", "Income Tax","Corporate Law","Economics","Auditing"};
+  String[] science1 = {"Physics", "Chemistry","Mathematics","Biology","Computer"};
+
+//  System.out.println();     // Which stream according to Subjects 
+  String stm1="";
+  
+  for (int i = 0; i < 5; i++) {
+       if (subject_name.equals(arts1[i])) {
+          System.out.println("Arts");
+         stm1="Arts";
+           break;
+       } else if (subject_name.equals(commerce1[i])) {
+           System.out.println("Commerce");
+           stm1="commerce";
+           		
+           break;
+       } else if (subject_name.equals(science1[i])) {
+           System.out.println("Science");
+           stm1="Science";
+           
+           break;
+       }
+   }
+ 
+ 
+	 if (subject_name.equalsIgnoreCase("English")) {
+		 Lab="1";
+		 
+     // System.out.println("Lab number 1");
+  } else if (subject_name.equalsIgnoreCase("History")) {
+		 Lab="2";
+     // System.out.println("Lab number 2");
+  }
+  
+  else if (subject_name.equalsIgnoreCase("Music")) {
+		 Lab="3";
+
+      System.out.println("Lab number 3");
+  }
+	 
+  else if (subject_name.equalsIgnoreCase("Geography")) {
+		 Lab="4";
+  }
+  else if (subject_name.equalsIgnoreCase("Education")) {
+		 Lab="5";
+  }
+  else if (subject_name.equalsIgnoreCase("Auditing")) {
+		 Lab="6";
+  }
+  else if (subject_name.equalsIgnoreCase("Economics")) {
+		 Lab="7";
+  }
+  else if (subject_name.equalsIgnoreCase("Corporate Law")) {
+		 Lab="8";
+  }
+  else if (subject_name.equalsIgnoreCase("Income Tax")) {
+		 Lab="9";
+  }
+  else if (subject_name.equalsIgnoreCase("Business")) {
+		 Lab="10";
+  }
+  else if (subject_name.equalsIgnoreCase("Mathematics")) {
+		 Lab="11";
+  }
+  else if (subject_name.equalsIgnoreCase("Physics")) {
+		 Lab="12";
+  }
+  else if (subject_name.equalsIgnoreCase("Chemistry")) {
+		 Lab="13";
+  }
+	 
+  else if (subject_name.equalsIgnoreCase("Biology")) {
+ 	 Lab="14";
+  }
+  else if (subject_name.equalsIgnoreCase("Computer")) {
+      Lab="15";
+  } else {
+      System.out.println("Lab number not assigned");
+  }
+
+ PreparedStatement add = conn.prepareStatement("insert into  routinetable(Stream,Subject,Day,Time,Teacher3,Room,Type) values(?,?,?,?,?,?,?)");
+ 
+//   String Type = "Lab";
+
+ System.out.println(""+subject_name);
+ 
+ System.out.println(""+teacher1);
+
+//System.out.println(""+teacher2);
+
+  
+ //  String Stream =stm;
+      add.setString(1,stm1);
+      add.setString(2,subject_name);
+      add.setString(3,Day);
+      add.setString(4,Time); 
+      add.setString(5,teacher3);
+     //add.setString(6,teacher2);
+      add.setString(6,Lab);	//room   		  
+    // lau.setString(8,"Group1");
+      add.setString(7,Type);
+
+  int cc=   add.executeUpdate();
+ if(cc>0) {
+
+   	 PrintWriter pn = response.getWriter();
+			 pn.print("Update Sucessful Teacher3!! ");  
+ }
+ 
+ else {
+	  System.out.println("Tacher 2 Not Add ");
+ }
+ 
+}
+
+}
+
+}
+catch(Exception e) {
+
+}
+
+
+
+
+// work 1
+/* -----------------------------------------------------------------------Teacher Id 3 --------------------------------------------------------------*/
+   
+
+/*                         Lab 3:00             tue wed                */
+
+//check error 
+System.out.println("Working .............................!!!!!! *********** ");
+
+/*                                                                                   */
+
+
+
+
+
+try (Statement jio = conn.createStatement() ) {
+    
+String sub3 = "Select * from subject_table";
+
+ResultSet ou = jio.executeQuery(sub3);
+
+
+while(ou.next()){ // it is run while info have in databases  one by one
+    String  T1,T2,Sub; // all data come in string format like int vrchar, 
+Sub = ou.getString("SubjectName");
+ T1 = ou.getString("TeacherID1");
+T2 = ou.getString("TeacherID2");
+//  System.out.println("Subject "+Sub);
+// System.out.println("Teacher2 : "+T2);
+// System.out.println("Teacher3: "+T3);
+
+if(T1==null) {
+	//
+}
+else if(T1!=null&&T2!=null) {
+	
+
+	 PreparedStatement wow = conn.prepareStatement("SELECT * FROM  	routinetable 	 WHERE Subject =? and Day =? and Time =? and Teacher1=? and Teacher2 =?");
+	// String day1="Monday";
+	 
+	 
+	 String time1="2:00";
+        wow.setString(1,Sub);
+        wow.setString(2,Day);
+        wow.setString(3,time1); 
+        wow.setString(4,T1);
+        wow.setString(5,T2);
+       // neo.setString(5,Teacher2);
+ 
+		 ResultSet	 yo= wow.executeQuery();
+         
+	//	 System.out.println("Test 3");
+         
+         if(yo.next()) { //2
+        //	 System.out.println("Value is avabiable");    			    			
+         }
+         else  {   
+        	 
+        	 
+        	  String[] arts1 = {"English","Education","History","Music","Geography"};
+    	        String[] commerce1 = {"Business", "Income Tax","Corporate Law","Economics","Auditing"};
+    	       String[] science1 = {"Physics", "Chemistry","Mathematics","Biology","Computer"};
+    	    
+    	     //  System.out.println();     // Which stream according to Subjects 
+    	       String stm1="";
+    	       
+    	       for (int i = 0; i < 5; i++) {
+    	            if (Sub.equals(arts1[i])) {
+    	               System.out.println("Arts");
+    	              stm1="Arts";
+    	                break;
+    	            } else if (Sub.equals(commerce1[i])) {
+    	                System.out.println("Commerce");
+    	                stm1="commerce";
+    	                		
+    	                break;
+    	            } else if (Sub.equals(science1[i])) {
+    	                System.out.println("Science");
+    	                stm1="Science";
+    	                
+    	                break;
+    	            }
+    	        }
+    	   
+    	     
+      
+          String Lab3 ="";
+        	 if (Sub.equalsIgnoreCase("English")) {
+        		 Lab3="1";
+        		 
+                 System.out.println("Lab number 1");
+             } else if (subject.equalsIgnoreCase("History")) {
+        		 Lab3="2";
+                 System.out.println("Lab number 2");
+             }
+             
+             else if (subject.equalsIgnoreCase("Music")) {
+        		 Lab3="3";
+
+                 System.out.println("Lab number 3");
+             }
+        	 
+             else if (subject.equalsIgnoreCase("Geography")) {
+        		 Lab3="4";
+             }
+             else if (subject.equalsIgnoreCase("Education")) {
+        		 Lab3="5";
+             }
+             else if (subject.equalsIgnoreCase("Auditing")) {
+        		 Lab3="6";
+             }
+             else if (subject.equalsIgnoreCase("Economics")) {
+        		 Lab3="7";
+             }
+             else if (subject.equalsIgnoreCase("Corporate Law")) {
+        		 Lab3="8";
+             }
+             else if (subject.equalsIgnoreCase("Income Tax")) {
+        		 Lab3="9";
+             }
+             else if (subject.equalsIgnoreCase("Business")) {
+        		 Lab3="10";
+             }
+             else if (subject.equalsIgnoreCase("Mathematics")) {
+        		 Lab3="11";
+             }
+             else if (subject.equalsIgnoreCase("Physics")) {
+        		 Lab3="12";
+             }
+             else if (subject.equalsIgnoreCase("Chemistry")) {
+        		 Lab3="13";
+             }
+        	 
+             else if (subject.equalsIgnoreCase("Biology")) {
+            	 Lab3="14";
+             }
+             else if (subject.equalsIgnoreCase("Computer")) {
+                 Lab3="15";
+             } else {
+                 System.out.println("Lab number not assigned");
+             }
+             
+  
+     //   	 System.out.println(stm1 + " " + Sub + " " + day1 + " " + time1 + " " + T2 + " " + T3);
+        	    
+    	     PreparedStatement lau = conn.prepareStatement("insert into  routinetable(Stream,Subject,Day,Time,Teacher1,Teacher2,Type,LabNo) values(?,?,?,?,?,?,?,?)");
+
+       // String	 T1 ="";
+        String Type2 ="Lab";
+    	       lau.setString(1,stm1);
+    	       lau.setString(2,Sub);
+    	       lau.setString(3,Day);
+    	       lau.setString(4,time1);
+    	       lau.setString(5,T1);
+    	       lau.setString(6,T2);
+    	      // labu.setString(7,T3);
+    	       lau.setString(7,Type2);	   		  
+	         // lau.setString(8,"Group1");
+    	       lau.setString(8,Lab3);
+    	     int occ=  lau.executeUpdate();    
+            //  System.out.println("oc : "+oc);
+    	      /* if(oc>0) {
+    	    	   System.out.println("Execute Update Successful !!");   
+    	       }
+    	       else {
+    	    	   System.out.println("Execute Update Not Successful !!");   
+
+    	       }*/
+    	   
+        //	 System.out.println("Please Insert Time 3:00      Monday        Here Yoooooooooo ");
+        	//break; 
+      
+     } 
+}
+
+} // While Loop 
+} // Try{}
+catch(Exception e)
+{
+System.out.println(""+e);	
+
+}	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*                                                            */
+
+
+
+
+
+
+
+try (Statement lab = conn.createStatement() ) {
+    
+String sub3 = "Select * from subject_table";
+
+ResultSet sujit = lab.executeQuery(sub3);
+
+
+while(sujit.next()){ // it is run while info have in databases  one by one
+    String  T2,T3,Sub; // all data come in string format like int vrchar, 
+Sub = sujit.getString("SubjectName");
+ T2 = sujit.getString("TeacherID2");
+T3 = sujit.getString("TeacherID3");
+//  System.out.println("Subject "+Sub);
+// System.out.println("Teacher2 : "+T2);
+// System.out.println("Teacher3: "+T3);
+
+if(T2==null&&T3==null) {
+	//
+}
+else if(T2!=null&&T3!=null) {
+	
+
+	 PreparedStatement jio = conn.prepareStatement("SELECT * FROM  	routinetable 	 WHERE Subject =? and Day =? and Time =? and Teacher2=? and Teacher3 =?");
+	 String day1="Monday";
+	 
+	 
+	 String time1="3:00";
+        jio.setString(1,Sub);
+        jio.setString(2,Day);
+        jio.setString(3,time1); 
+        jio.setString(4,T2);
+        jio.setString(5,T3);
+       // neo.setString(5,Teacher2);
+ 
+		 ResultSet	 ou= jio.executeQuery();
+         
+	//	 System.out.println("Test 3");
+         
+         if(ou.next()) { //2
+        //	 System.out.println("Value is avabiable");    			    			
+         }
+         else  {   
+        	 
+        	 
+        	  String[] arts1 = {"English","Education","History","Music","Geography"};
+    	        String[] commerce1 = {"Business", "Income Tax","Corporate Law","Economics","Auditing"};
+    	       String[] science1 = {"Physics", "Chemistry","Mathematics","Biology","Computer"};
+    	    
+    	     //  System.out.println();     // Which stream according to Subjects 
+    	       String stm1="";
+    	       
+    	       for (int i = 0; i < 5; i++) {
+    	            if (Sub.equals(arts1[i])) {
+    	               System.out.println("Arts");
+    	              stm1="Arts";
+    	                break;
+    	            } else if (Sub.equals(commerce1[i])) {
+    	                System.out.println("Commerce");
+    	                stm1="commerce";
+    	                		
+    	                break;
+    	            } else if (Sub.equals(science1[i])) {
+    	                System.out.println("Science");
+    	                stm1="Science";
+    	                
+    	                break;
+    	            }
+    	        }
+    	   
+    	     
+      
+          String Lab3 ="";
+        	 if (Sub.equalsIgnoreCase("English")) {
+        		 Lab3="1";
+        		 
+                 System.out.println("Lab number 1");
+             } else if (subject.equalsIgnoreCase("History")) {
+        		 Lab3="2";
+                 System.out.println("Lab number 2");
+             }
+             
+             else if (subject.equalsIgnoreCase("Music")) {
+        		 Lab3="3";
+
+                 System.out.println("Lab number 3");
+             }
+        	 
+             else if (subject.equalsIgnoreCase("Geography")) {
+        		 Lab3="4";
+             }
+             else if (subject.equalsIgnoreCase("Education")) {
+        		 Lab3="5";
+             }
+             else if (subject.equalsIgnoreCase("Auditing")) {
+        		 Lab3="6";
+             }
+             else if (subject.equalsIgnoreCase("Economics")) {
+        		 Lab3="7";
+             }
+             else if (subject.equalsIgnoreCase("Corporate Law")) {
+        		 Lab3="8";
+             }
+             else if (subject.equalsIgnoreCase("Income Tax")) {
+        		 Lab3="9";
+             }
+             else if (subject.equalsIgnoreCase("Business")) {
+        		 Lab3="10";
+             }
+             else if (subject.equalsIgnoreCase("Mathematics")) {
+        		 Lab3="11";
+             }
+             else if (subject.equalsIgnoreCase("Physics")) {
+        		 Lab3="12";
+             }
+             else if (subject.equalsIgnoreCase("Chemistry")) {
+        		 Lab3="13";
+             }
+        	 
+             else if (subject.equalsIgnoreCase("Biology")) {
+            	 Lab3="14";
+             }
+             else if (subject.equalsIgnoreCase("Computer")) {
+                 Lab3="15";
+             } else {
+                 System.out.println("Lab number not assigned");
+             }
+             
+  
+     //   	 System.out.println(stm1 + " " + Sub + " " + day1 + " " + time1 + " " + T2 + " " + T3);
+        	    
+    	     PreparedStatement labu = conn.prepareStatement("insert into  routinetable(Stream,Subject,Day,Time,Teacher1,Teacher2,Teacher3,Type,LabNo) values(?,?,?,?,?,?,?,?,?)");
+
+        String	 T1 ="";
+        String Type2 ="Lab";
+    	       labu.setString(1,stm1);
+    	       labu.setString(2,Sub);
+    	       labu.setString(3,Day);
+    	       labu.setString(4,time1);
+    	       labu.setString(5,T1);
+    	       labu.setString(6,T2);
+    	       labu.setString(7,T3);
+    	       labu.setString(8,Type2);	   		  
+	         // lau.setString(8,"Group1");
+    	       labu.setString(9,Lab3);
+    	     int oc=  labu.executeUpdate();    
+            //  System.out.println("oc : "+oc);
+    	      /* if(oc>0) {
+    	    	   System.out.println("Execute Update Successful !!");   
+    	       }
+    	       else {
+    	    	   System.out.println("Execute Update Not Successful !!");   
+
+    	       }*/
+    	   
+        //	 System.out.println("Please Insert Time 3:00      Monday        Here Yoooooooooo ");
+        	//break; 
+      
+     } 
+}
+
+} // While Loop 
+} // Try{}
+catch(Exception e)
+{
+System.out.println(""+e);	
+
+}	                 
+/* lab 4:00 pm */ 
+
+
+
+try (Statement four = conn.createStatement() ) {
+    
+String sub31 = "Select * from subject_table";
+
+ResultSet woo = four.executeQuery(sub31);
+
+
+while(woo.next()){ // it is run while info have in databases  one by one
+    String  T1,T3,Sub; // all data come in string format like int vrchar, 
+Sub = woo.getString("SubjectName");
+ T1 = woo.getString("TeacherID1");
+T3 = woo.getString("TeacherID3");
+//  System.out.println("Subject "+Sub);
+// System.out.println("Teacher2 : "+T2);
+// System.out.println("Teacher3: "+T3);
+
+if(T1==null&&T3==null) {
+	//
+}
+else if(T1!=null&&T3!=null) {
+	
+
+	 PreparedStatement jio1 = conn.prepareStatement("SELECT * FROM  	routinetable 	 WHERE Subject =? and Day =? and Time =? and Teacher1=? and Teacher3 =?");
+	 String day1="Monday";
+	 
+	 
+	 String time1="4:00";
+        jio1.setString(1,Sub);
+        jio1.setString(2,Day);
+        jio1.setString(3,time1); 
+        jio1.setString(4,T1);
+        jio1.setString(5,T3);
+       // neo.setString(5,Teacher2);
+ 
+		 ResultSet	 fup= jio1.executeQuery();
+         
+	//	 System.out.println("Test 3");
+         
+         if(fup.next()) { //2
+        //	 System.out.println("Value is avabiable");    			    			
+         }
+         else  {   
+        	 
+        	 
+        	  String[] arts1 = {"English","Education","History","Music","Geography"};
+    	        String[] commerce1 = {"Business", "Income Tax","Corporate Law","Economics","Auditing"};
+    	       String[] science1 = {"Physics", "Chemistry","Mathematics","Biology","Computer"};
+    	    
+    	     //  System.out.println();     // Which stream according to Subjects 
+    	       String stm1="";
+    	       
+    	       for (int i = 0; i < 5; i++) {
+    	            if (Sub.equals(arts1[i])) {
+    	               System.out.println("Arts");
+    	              stm1="Arts";
+    	                break;
+    	            } else if (Sub.equals(commerce1[i])) {
+    	                System.out.println("Commerce");
+    	                stm1="commerce";
+    	                		
+    	                break;
+    	            } else if (Sub.equals(science1[i])) {
+    	                System.out.println("Science");
+    	                stm1="Science";
+    	                
+    	                break;
+    	            }
+    	        }
+    	
+          String Lab3 ="";
+        	 if (Sub.equalsIgnoreCase("English")) {
+        		 Lab3="1";
+        		 
+                 System.out.println("Lab number 1");
+             } else if (subject.equalsIgnoreCase("History")) {
+        		 Lab3="2";
+                 System.out.println("Lab number 2");
+             }
+             
+             else if (subject.equalsIgnoreCase("Music")) {
+        		 Lab3="3";
+
+                 System.out.println("Lab number 3");
+             }
+        	 
+             else if (subject.equalsIgnoreCase("Geography")) {
+        		 Lab3="4";
+             }
+             else if (subject.equalsIgnoreCase("Education")) {
+        		 Lab3="5";
+             }
+             else if (subject.equalsIgnoreCase("Auditing")) {
+        		 Lab3="6";
+             }
+             else if (subject.equalsIgnoreCase("Economics")) {
+        		 Lab3="7";
+             }
+             else if (subject.equalsIgnoreCase("Corporate Law")) {
+        		 Lab3="8";
+             }
+             else if (subject.equalsIgnoreCase("Income Tax")) {
+        		 Lab3="9";
+             }
+             else if (subject.equalsIgnoreCase("Business")) {
+        		 Lab3="10";
+             }
+             else if (subject.equalsIgnoreCase("Mathematics")) {
+        		 Lab3="11";
+             }
+             else if (subject.equalsIgnoreCase("Physics")) {
+        		 Lab3="12";
+             }
+             else if (subject.equalsIgnoreCase("Chemistry")) {
+        		 Lab3="13";
+             }
+        	 
+             else if (subject.equalsIgnoreCase("Biology")) {
+            	 Lab3="14";
+             }
+             else if (subject.equalsIgnoreCase("Computer")) {
+                 Lab3="15";
+             } else {
+                 System.out.println("Lab number not assigned");
+             }
+             
+  
+     //   	 System.out.println(stm1 + " " + Sub + " " + day1 + " " + time1 + " " + T2 + " " + T3);
+        	    
+    	     PreparedStatement labu1 = conn.prepareStatement("insert into  routinetable(Stream,Subject,Day,Time,Teacher1,Teacher2,Teacher3,Type,LabNo) values(?,?,?,?,?,?,?,?,?)");
+
+      String	 T2 ="";
+        String Type2 ="Lab";
+    	       labu1.setString(1,stm1);
+    	       labu1.setString(2,Sub);
+    	       labu1.setString(3,Day);
+    	       labu1.setString(4,time1);
+    	       labu1.setString(5,T1);
+    	       labu1.setString(6,T2);
+    	       labu1.setString(7,T3);
+    	       labu1.setString(8,Type2);	   		  
+	         // lau.setString(8,"Group1");
+    	       labu1.setString(9,Lab3);
+    	     int oc1=  labu1.executeUpdate();    
+            //  System.out.println("oc : "+oc);
+    	      /* if(oc>0) {
+    	    	   System.out.println("Execute Update Successful !!");   
+    	       }
+    	       else {
+    	    	   System.out.println("Execute Update Not Successful !!");   
+
+    	       }*/
+    	   
+        //	 System.out.println("Please Insert Time 3:00      Monday        Here Yoooooooooo ");
+        	//break; 
+      
+     } 
+}
+
+} // While Loop 
+}
+
+/* lab 4:00 */
+
+
+
+} // For loop 
+
+
+
+/* -------------------------------------------------------------- Lab Tuesday add ------------------------------------- */
+
+
+		               }// // While{}
+		                 
+ } // Try{}
+		             
+	             catch(Exception e)
+					{
+					System.out.println(""+e);	
+					
+					}	                 
+		             
+	             
+	             
+		            // } // Try{} 
+	         //    catch(Exception e)
+				//	{
+				//	System.out.println(""+e);	
+					
+				//	}
+		
+	             
+	/* Teacher Id2                          */             
+      
+	      /* Teacher Id2 */       
 
 			 }//  (public class routine extends HttpServlet)------->{doGet(request, response);}-----> [1st Try] ------> [2nd Try]			 
 			 catch(Exception e)
@@ -1139,7 +2202,253 @@ catch(Exception e){System.out.println(""+e);
 				System.out.println(""+e);	
 				
 				} //(public class routine extends HttpServlet)------->{doGet(request, response);}-----> [1st Try] ------> [2nd Try]------>catch(Exception e)
-		 
+			 
+ 
+		/* Out put */  
+			 
+			 
+		
+			 
+			 System.out.println("Filnal output Bijoy !!!!!!!-----------------");
+			 
+			 
+			 try  {
+				// String subject1 = request.getParameter("Stream");
+              //  String strm123;
+				 response.setContentType("text/html");
+			       
+	            // String re = "Select * from routinetable";
+	             
+	          /*   String re=    "SELECT r.Stream, r.Subject, r.Day, r.Time, " +
+                         "(SELECT TeacherName FROM teachertable WHERE TeacherID = r.teacher1) AS Teacher1, " +
+                         "(SELECT TeacherName FROM teachertable WHERE TeacherID = r.teacher2) AS Teacher2, " +
+                         "(SELECT TeacherName FROM teachertable WHERE TeacherID = r.teacher3) AS Teacher3, " +
+                         "r.Room, r.Type, r.GroupN, r.LabNo " +
+                       //  "FROM routinetable r";
+	            		 "FROM routinetable r WHERE r.Stream = ?"; */
+	             
+	             
+	             
+	             
+	             String re ="SELECT r.Stream, r.Subject, r.Day, r.Time, " +
+                         "(SELECT TeacherName FROM teachertable WHERE TeacherID = r.teacher1) AS Teacher1, " +
+                         "(SELECT TeacherName FROM teachertable WHERE TeacherID = r.teacher2) AS Teacher2, " +
+                         "(SELECT TeacherName FROM teachertable WHERE TeacherID = r.teacher3) AS Teacher3, " +
+                         "r.Room, r.Type, r.GroupN, r.LabNo " +
+                         "FROM routinetable r WHERE r.Stream = ?";
+	             		
+	             
+	             
+	             PreparedStatement statement = conn.prepareStatement(re);
+	             
+	             statement.setString(1,strm123); // Set the selected stream
+	             ResultSet show = statement.executeQuery();
+	             
+	             
+	            //  view.setString(1,strm123); // Set the selected stream
+	             
+	             
+	             
+	          //   ResultSet show = view.executeQuery(re);
+	             
+	       
+	             
+	             PrintWriter out = response.getWriter();
+out.println("<table border='1'>");
+out.println("<tr><th>Stream</th><th>Subject</th><th>Day</th><th>Time</th><th>Teacher1</th><th>Teacher2</th><th>Teacher3</th><th>Room</th><th>Type</th><th>GroupN</th><th>LabNo</th></tr>");
+
+	           //  int count=0;
+	             while(show.next()){ // it is run while info have in databases  one by one
+	                 String  subject_name; /* all data come in string format like int vrchar, */
+
+	                 String Stream,teacher1,teacher2,teacher3,Subject,Day1,Time,Room,Type,GroupN,LabNo;
+	                 Stream = show.getString("Stream");
+	                 Subject = show.getString("Subject");
+	                 Day1 = show.getString("Day");
+	                 Time = show.getString("Time");
+	                 teacher1 = show.getString("Teacher1");
+	                 teacher2 = show.getString("Teacher2");
+	                 teacher3 = show.getString("Teacher3"); 
+	                 Room = show.getString("Room"); 
+
+	                 Type = show.getString("Type"); 
+	                 GroupN = show.getString("GroupN");
+	                 LabNo = show.getString("LabNo");
+/*  
+
+	                 System.out.println(""+Stream);
+	                 System.out.println(""+Subject);
+	                 System.out.println(""+Day1);
+	                 System.out.println(""+Time);
+	                 System.out.println(""+teacher1);
+	                 System.out.println(""+teacher2);
+	                 System.out.println(""+teacher3);
+	                 System.out.println(""+Type);
+	                 System.out.println(""+GroupN);
+	                 System.out.println(""+LabNo);
+	                 System.out.println("OK Bijoy ");
+*/
+	                 
+	               
+	                 
+	                 
+	                 
+
+	                 out.println("<tr>");
+	                 out.println("<td>" + show.getString("Stream") + "</td>");
+	                 out.println("<td>" + show.getString("Subject") + "</td>");
+	                 out.println("<td>" + show.getString("Day") + "</td>");
+	                 out.println("<td>" + show.getString("Time") + "</td>");
+	                 out.println("<td>" + show.getString("teacher1") + "</td>");
+	                 out.println("<td>" + show.getString("teacher2") + "</td>");
+	                 out.println("<td>" + show.getString("teacher3") + "</td>");
+	                 out.println("<td>" + show.getString("Room") + "</td>");
+
+	                 out.println("<td>" + show.getString("Type") + "</td>");
+	                 out.println("<td>" + show.getString("GroupN") + "</td>");
+	                 out.println("<td>" + show.getString("LabNo") + "</td>");
+	                 out.println("</tr>");
+
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                /* 
+	                 
+	                 out.println("<tr>");
+	                 out.println("<td>" + show.getString("Stream") + "</td>");
+	                 out.println("<td>" + show.getString("Subject") + "</td>");
+	                 out.println("<td>" + show.getString("Day") + "</td>");
+	                 out.println("<td>" + show.getString("Time") + "</td>");
+	                 out.println("<td>" + (show.getString("Teacher1Name") != null ? show.getString("Teacher1Name") : "N/A") + "</td>");
+	                 out.println("<td>" + (show.getString("Teacher2Name") != null ? show.getString("Teacher2Name") : "N/A") + "</td>");
+	                 out.println("<td>" + (show.getString("Teacher3Name") != null ? show.getString("Teacher3Name") : "N/A") + "</td>");
+	                 out.println("<td>" + show.getString("Room") + "</td>");
+	                 out.println("<td>" + show.getString("Type") + "</td>");
+	                 out.println("<td>" + show.getString("Group") + "</td>");
+	                 out.println("<td>" + show.getString("LabNo") + "</td>");
+	                 out.println("</tr>");
+	                 
+	                 */
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	                 
+	             }
+	             
+	             
+	             out.println("</table>");
+			 }
+			 catch (Exception e)
+				{
+				System.out.println(""+e);		
+				}
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 /* Output */ 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
 		} // (public class routine extends HttpServlet)------->{doGet(request, response);}--------> [1st Try] 
 		
 		
